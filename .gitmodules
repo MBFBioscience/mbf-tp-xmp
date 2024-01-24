@@ -1,0 +1,6 @@
+[submodule "third-party/zlib"]
+	path = third-party/zlib
+	url = https://github.com/madler/zlib
+[submodule "third-party/libexpat"]
+	path = third-party/expat
+	url = https://github.com/libexpat/libexpat

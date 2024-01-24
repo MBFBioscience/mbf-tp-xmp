@@ -54,7 +54,7 @@ else()
 endif()
 
 set(TP_ZUID_PATH "${XMPROOT_DIR}/third-party/zuid/interfaces")
-set(TP_EXPAT_PATH "${PROJECT_ROOT}/../../third-party/expat/lib/")
+set(TP_EXPAT_PATH "${PROJECT_ROOT}/../../third-party/expat/expat/lib/")
 
 # ==============================================================================
 # Project specific config starts here

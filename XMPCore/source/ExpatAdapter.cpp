@@ -12,7 +12,7 @@
 #include "source/ExpatAdapter.hpp"
 #include "XMPCore/source/XMPMeta.hpp"
 
-#include "third-party/expat/lib/expat.h"
+#include "third-party/expat/expat/lib/expat.h"
 #include <string.h>
 
 using namespace std;
