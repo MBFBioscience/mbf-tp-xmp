@@ -263,10 +263,11 @@ SetOutputPath(${OUTPUT_DIR} 0)
 if(UNIX)
 	if (NOT APPLE AND NOT ANDROID)
 		if (${XMP_BUILD_STATIC})
-			add_custom_command (TARGET ${TARGET_NAME}
-				POST_BUILD
-				COMMAND  mv ${OUTPUT_DIR}/lib${XMPCORE_LIB}.a  ${OUTPUT_DIR}/${XMPCORE_LIB}.ar
-			)
+			message (STATUS "Skipping UNIX lib rename")
+			#add_custom_command (TARGET ${TARGET_NAME}
+			#	POST_BUILD
+			#	COMMAND  mv ${OUTPUT_DIR}/lib${XMPFILES_LIB}.a  ${OUTPUT_DIR}/${XMPFILES_LIB}.ar
+			#)
 		else()
 			if((${CMAKE_BUILD_TYPE} MATCHES "Debug") OR (${CMAKE_BUILD_TYPE} MATCHES "debug") )
 				add_custom_command (TARGET ${TARGET_NAME}

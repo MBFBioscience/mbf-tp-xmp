@@ -11,9 +11,9 @@
 # define minimum cmake version
 # For Android always build with make 3.6
 if(ANDROID)
-	cmake_minimum_required(VERSION 3.5.2)
+	cmake_minimum_required(VERSION 3.5.2...3.5.2)
 else(ANDROID)
-	cmake_minimum_required(VERSION 3.15.5)
+	cmake_minimum_required(VERSION 3.15.5...3.28.1)
 endif(ANDROID)
 
 # Enable folder grouping of projects in IDEs
@@ -51,6 +51,13 @@ if (XMP_BUILD_STATIC)
 	add_definitions(-DBUILDING_XMPCORE_AS_STATIC=1)
 else()
 	add_definitions(-DBUILDING_XMPCORE_AS_DYNAMIC=1)
+endif()
+
+# libexpat requires XML_GE to be explicitly enabled or disabled.
+if (XMP_DISABLE_XML_GE)
+	add_definitions(-DXML_GE=0)
+else()
+	add_definitions(-DXML_GE=1)
 endif()
 
 set(TP_ZUID_PATH "${XMPROOT_DIR}/third-party/zuid/interfaces")

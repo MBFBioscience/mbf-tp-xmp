@@ -11,9 +11,9 @@
 # define minimum cmake version
 # For Android always build with make 3.6
 if(ANDROID)
-	cmake_minimum_required(VERSION 3.5.2)
+	cmake_minimum_required(VERSION 3.5.2...3.5.2)
 else(ANDROID)
-	cmake_minimum_required(VERSION 3.15.5)
+	cmake_minimum_required(VERSION 3.15.5...3.28.1)
 endif(ANDROID)
 
 # Enable folder grouping of projects in IDEs
@@ -53,6 +53,13 @@ set(LIB_ADOBEXMP XMPCore)
 
 if(ANDROID)
 	set(LIB_ADOBEXMP libXMPCore.so)
+endif()
+
+# libexpat requires XML_GE to be explicitly enabled or disabled.
+if (XMP_DISABLE_XML_GE)
+	add_definitions(-DXML_GE=0)
+else()
+	add_definitions(-DXML_GE=1)
 endif()
 
 # ==============================================================================
