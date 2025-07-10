@@ -19,27 +19,26 @@ endif(ANDROID)
 # ==============================================================================
 # Shared config for mac
 # ==============================================================================
-DetectXCodeVersion()
+#DetectXCodeVersion()
 
-if(${CMAKE_INSTALLED_XCODE_VERSION} LESS 4.3.0)
-	if(NOT DEFINED ${COMPONENT}_DEVELOPER_ROOT)
-		set(${COMPONENT}_DEVELOPER_ROOT "/Developer")
-	endif()
-	
-	set(CMAKE_OSX_DEPLOYMENT_TARGET 	${${COMPONENT}_OSX_TARGET})
-else()
+#if(${CMAKE_INSTALLED_XCODE_VERSION} LESS 4.3.0)
+#	if(NOT DEFINED ${COMPONENT}_DEVELOPER_ROOT)
+#		set(${COMPONENT}_DEVELOPER_ROOT "/Developer")
+#	endif()	
+#	set(CMAKE_OSX_DEPLOYMENT_TARGET 	${${COMPONENT}_OSX_TARGET})
+#else()
 	# get xcode installation path
-	execute_process(
-			  COMMAND xcode-select -print-path
-			  OUTPUT_VARIABLE ${COMPONENT}_DEVELOPER_ROOT
-			  OUTPUT_STRIP_TRAILING_WHITESPACE
-	)
-	set(CMAKE_OSX_DEPLOYMENT_TARGET 	${${COMPONENT}_OSX_TARGET})
-   	set(${COMPONENT}_DEVELOPER_ROOT "${${COMPONENT}_DEVELOPER_ROOT}/Platforms/MacOSX.platform/Developer")
-endif()
+	#execute_process(
+	#		  COMMAND xcode-select -print-path
+	#		  OUTPUT_VARIABLE ${COMPONENT}_DEVELOPER_ROOT
+	#		  OUTPUT_STRIP_TRAILING_WHITESPACE
+	#)
+	#set(CMAKE_OSX_DEPLOYMENT_TARGET 	${${COMPONENT}_OSX_TARGET})
+   	#set(${COMPONENT}_DEVELOPER_ROOT "${${COMPONENT}_DEVELOPER_ROOT}/Platforms/MacOSX.platform/Developer")
+#endif()
 
-set(CMAKE_OSX_SYSROOT "${${COMPONENT}_DEVELOPER_ROOT}/SDKs/MacOSX${${COMPONENT}_OSX_SDK}.sdk")
-
+#set(CMAKE_OSX_SYSROOT "${${COMPONENT}_DEVELOPER_ROOT}/SDKs/MacOSX${${COMPONENT}_OSX_SDK}.sdk")
+set(CMAKE_OSX_SYSROOT "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk")
 
 
 #
@@ -220,9 +219,9 @@ endfunction(SetOutputPath2)
 # TODO: make function work on all platforms. Unify with AddMacFramework.
 function(SetPlatformLinkFlags target linkflags libname)
 	# set additional XCode attribute for Mac
-	if (CMAKE_INSTALLED_XCODE_VERSION GREATER 4.4.9)
+	#if (CMAKE_INSTALLED_XCODE_VERSION GREATER 4.4.9)
 		set(linkflags "${linkflags} -Xlinker -no_data_in_code_info")
-	endif()
+	#endif()
 	set_property(TARGET ${target} APPEND_STRING PROPERTY LINK_FLAGS " ${linkflags}")
 	set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_GCC_GENERATE_DEBUGGING_SYMBOLS "YES")
 	set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_DEBUG_INFORMATION_FORMAT "dwarf-with-dsym")

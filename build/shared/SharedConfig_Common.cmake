@@ -146,18 +146,18 @@ endfunction(ConvertListToString)
 # Function: Determine XCode version installed on current machine
 # =======================================================================
 #
-function(DetectXCodeVersion)
+#function(DetectXCodeVersion)
 	# get xcode version
-	execute_process(
-			  COMMAND xcodebuild -version
-			  OUTPUT_VARIABLE CMAKE_INSTALLED_XCODE_VERSION
-			  OUTPUT_STRIP_TRAILING_WHITESPACE
-	)
-	string(REGEX MATCH "Xcode ([1-9][0-9].[0-9][.]?[0-9]?)" matches ${CMAKE_INSTALLED_XCODE_VERSION})
+#	execute_process(
+#			  COMMAND xcodebuild -version
+#			  OUTPUT_VARIABLE CMAKE_INSTALLED_XCODE_VERSION
+#			  OUTPUT_STRIP_TRAILING_WHITESPACE
+#	)
+#	string(REGEX MATCH "Xcode ([1-9][0-9].[0-9][.]?[0-9]?)" matches ${CMAKE_INSTALLED_XCODE_VERSION})
 	#message("Matches1: ${CMAKE_MATCH_1}")
-	set(CMAKE_INSTALLED_XCODE_VERSION ${CMAKE_MATCH_1} PARENT_SCOPE)
+#	set(CMAKE_INSTALLED_XCODE_VERSION ${CMAKE_MATCH_1} PARENT_SCOPE)
 	#message("CMAKE_INSTALLED_XCODE_VERSION :${CMAKE_INSTALLED_XCODE_VERSION}")
-endfunction(DetectXCodeVersion)
+#endfunction(DetectXCodeVersion)
 
 # ==============================================================================
 # Function: Set the output path depending on isExecutable
